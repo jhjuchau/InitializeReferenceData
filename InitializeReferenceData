@@ -3,19 +3,18 @@
 * 
 * TO USE THIS CODE:
 * --Ensure that you have an empty salesforce database
-* --Copy/Paste this code in the developer console (Salesforce->Settings Gear Icon -> Developer Console)
+* --File -> Open -> Find 'InitializeReferenceData', or copy/paste this code into an empty Developer Console window
 * --Save
 * --Debug -> Open Execute Anonymous Window
 * --Write the following line:
 * 		InitializeReferenceData.main();
 * 
-*  That's it! The database should populate.
+*  That's it! The database should be populated without errors.
 * 
 * 
-*  All fields' 'createObject' method have highlighted fields; these fields are unwriteable, 
+*  All fields' 'createObject' methods have highlighted fields; these fields are unwriteable or otherwise unusable, 
 *  even with complete permissions. Salesforce will usually autofill them so don't stress too much
 * 
-*  Once data is entered, use topmost Salesforce search bar to find it
 *  
 * 
 */
@@ -1655,7 +1654,7 @@ false, false, false, 'Protected', '50', false);*/
             
             insertOperationList();
             
-       									 }
+       }
         
         void createSignalOperationObject(string sigInd, string driveways, string nb, string sb, string eb, string wb, 
                                          boolean overlap, boolean LPI, boolean school, string phasing, string shopNo,
@@ -1664,15 +1663,13 @@ false, false, false, 'Protected', '50', false);*/
                                              
                                              
                     sopEntry.DrivewaySignalIndication__c = sigInd;
-                    sopEntry.Driveways__c = driveways;
-                                             
+                    sopEntry.Driveways__c = driveways;                        
                     sopEntry.NorthboundPhasing__c = nb;
                     sopEntry.EastboundPhasing__c = eb;
                     sopEntry.SouthboundPhasing__c = sb;
                     sopEntry.WestboundPhasing__c = wb; 
                     sopEntry.OverlapPhasing__c = overlap;
-                    sopEntry.SeniorTiming__c = false;
-                                             
+                    sopEntry.SeniorTiming__c = false;                      
                     sopEntry.LPI__c = LPI;
                     sopEntry.Phasing__c = phasing; //picklist
                     sopEntry.RailroadPreemption__c = false;	//all entries are false
@@ -1707,8 +1704,8 @@ false, false, false, 'Protected', '50', false);*/
         List <IMInventory__c> invList = new List<IMInventory__c>();
         
         public void submitInvData(){ 	
-            //The values commented out on this list are 'inactive' on the IM Inventory list
-            //
+            //The values commented out on this list are 'inactive' on the IM Inventory list, and cannot be placed in Salesforce
+            
             createInvObject('NM-12', 'Malfunction Management Unit',   'Malfunction Management Unit - SSD',  '8028-8', 'L0040');
             
             createInvObject('NM-12', 'Malfunction Management Unit',   'Malfunction Management Unit - SSD',  '8026-1', 'L0041');
@@ -1742,7 +1739,7 @@ false, false, false, 'Protected', '50', false);*/
             createInvObject('2070-TS2', 'Controller', 'Controller - Eagle',  '', 'F421');
             
             //createInvObject('2070ATC', 'Controller', 'Controller - McCain',  '', 'F1055');
-            
+  
             //createInvObject('ATC EX 2070', 'Controller', 'Controller - McCain',  '17053', 'F1036');
             
             //createInvObject('2070 E', 'Controller', 'Controller - McCain',  '17360', 'F1038');
