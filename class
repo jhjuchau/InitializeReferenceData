@@ -1,0 +1,1832 @@
+/*	Written by James Juchau, October 2018
+*  Automates the process of populating a Salesforce database with sample data
+* 
+* TO USE THIS CODE:
+* --Ensure that you have an empty salesforce database
+* --Copy/Paste this code in the developer console (Salesforce->Settings Gear Icon -> Developer Console)
+* --Save
+* --Debug -> Open Execute Anonymous Window
+* --Write the following line:
+* 		InitializeReferenceData.main();
+* 
+*  That's it! The database should populate.
+* 
+* 
+*  All fields' 'createObject' method have highlighted fields; these fields are unwriteable, 
+*  even with complete permissions. Salesforce will usually autofill them so don't stress too much
+* 
+*  Once data is entered, use topmost Salesforce search bar to find it
+*  
+* 
+*/
+//Valid Latitude: 37.151171;
+//Valid Longitude: -121.747990;
+//
+
+global class InitializeReferenceData {
+    
+    public class Intersections{	//Intersection object
+        List<Intersection__c> intersectionList = new List<Intersection__c>();
+        
+        public void submitIntersectionData(){
+            createIntersectionObject('East-West', 'ABBEY CT', 'Local (LO)',
+                                     'North-South', 'ABBEY LN', 'Local (LO)', 37.28490725, -121.9662236, 
+                                     '3 Leg', 'No control');
+            
+            createIntersectionObject('East-West', 'ABBEY LN', 'Local (LO)',
+                                     'North-South', 'AINSLEY CT', 'Local (LO)', 
+                                     37.28571436, -121.9662422, 
+                                     '3 Leg', 'No control');
+            
+            createIntersectionObject('North-South', 'ABBEY LN', 'Local (LO)',
+                                     'East-West', 'BUCKNALL RD', 'Local (LO)', 
+                                     37.28417656, -121.9660831, 
+                                     '4 Leg', '2 Way Stop');
+            
+            createIntersectionObject('North-South', 'ABBEY LN', 'Local (LO)',
+                                     'East-West', 'CAMPBELL AV', 'Arterial (AR)', 
+                                     37.28674916, -121.9663321, 
+                                     '3 Leg', '1 Way Stop');
+            
+            createIntersectionObject('North-South', 'ABBEY LN', 'Local (LO)',
+                                     'East-West', 'RINCON AV', 'Neighborhood Collector (NC)', 
+                                     37.28195132, -121.966052, 
+                                     '3 Leg', '1 Way Stop');
+            
+            createIntersectionObject('North-South', 'ABBEYFIELD CT', 'Local (LO)',
+                                     'East-West', 'PASO LOS CERRITOS', 'Local (LO)', 
+                                     37.22525261, -121.8837812, 
+                                     '3 Leg', 'No control');
+            
+            createIntersectionObject('North-South', 'ABBEYGATE CT', 'Local (LO)',
+                                     'East-West', 'TAWNYGATE WY', 'Local (LO)', 
+                                     37.25525254, -121.9055984, 
+                                     '2 Leg', 'No Control');
+            
+            createIntersectionObject('East-West', 'ABDON AV', 'Local (LO)',
+                                     'North-South', 'CARVER ST', 'Local (LO)', 
+                                     37.37923454, -121.8375023, 
+                                     '3 Leg', 'No control');
+            
+            
+            createIntersectionObject('East-West', 'ABDON AV', 'Local (LO)',
+                                     'North-South', 'WHITE RD', 'Arterial (AR)', 
+                                     37.37879438, -121.8384267, 
+                                     '3 Leg', '1 Way Stop');
+            
+            createIntersectionObject('East-West', 'ABED CT/DOBERN AV', 'Local (LO)',
+                                     'North-South', 'MASSAR AV/PENROD PL', 'Local (LO)', 
+                                     37.35411133, -121.833437, 
+                                     '4 Leg', '4 Way Stop');
+            
+            createIntersectionObject('North-South', 'ABELIA CT', 'Local (LO)',
+                                     'East-West', 'LOUPE AV', 'Local (LO)', 
+                                     37.30249955, -121.8254782, 
+                                     '3 Leg', 'No control');
+            
+            createIntersectionObject('North-South', 'ABERDEEN CT', 'Local (LO)',
+                                     'East-West', 'HOLLY HILL DR', 'Local (LO)', 
+                                     37.32531851, -121.8430491, 
+                                     '3 Leg', 'No control');
+            
+            createIntersectionObject('North-South', 'ABERFORD DR', 'Local (LO)',
+                                     'East-West', 'RAMISH DR', 'Local (LO)', 
+                                     37.38787792, -121.8696566, 
+                                     '3 Leg', 'No control');
+            
+            createIntersectionObject('East-West', 'ABERFORD DR', 'Local (LO)',
+                                     'North-South', 'TOURNEY DR', 'Local (LO)', 
+                                     37.3852199, -121.869277, 
+                                     '3 Leg', 'No control');
+            
+            createIntersectionObject('East-West', 'ABERHAVEN CT', 'Local (LO)',
+                                     'North-South', 'HOUNDSHAVEN CT', 'Local (LO)', 
+                                     37.2709761, -121.820797, 
+                                     '3 Leg', 'No control');
+            
+            createIntersectionObject('East-West', 'ABINANTE LN', 'Local (LO)',
+                                     'North-South', 'ASSUNTA WY', 'Local (LO)', 
+                                     37.2707445, -121.930011, 
+                                     '3 Leg', 'No control');
+            
+            createIntersectionObject('East-West', 'ABINANTE LN', 'Local (LO)',
+                                     'North-South', 'EVORA LN', 'Local (LO)', 
+                                     37.2707638, -121.926752, 
+                                     '3 Leg', 'No control');
+            
+            createIntersectionObject('East-West', 'ABINANTE LN', 'Local (LO)',
+                                     'North-South', 'NEW JERSEY AV', 'Neighborhood Collector (NC)', 
+                                     37.2710092, -121.925841, 
+                                     '3 Leg', '3 Way Stop');	//1922
+            
+            createIntersectionObject('East-West', 'ABINANTE LN', 'Local (LO)',
+                                     'North-South', 'VIVIAN LN', 'Local (LO)', 
+                                     37.2702388, -121.928697, 
+                                     '3 Leg', 'No control'); //10295
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Major Street (MA)',
+                                     'North-South', 'ABORN SQ', 'Local (LO)', 
+                                     37.3111046, -121.81039, 
+                                     '3 Leg', '1 Way Stop'); //6074
+            
+            createIntersectionObject('North-South', 'ABORN CT', 'Local (LO)',
+                                     'East-West', 'ABORN RD', 'Major Street (MA)', 
+                                     37.3135749, -121.794279, 
+                                     '3 Leg', '1 Way Stop');
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Arterial (AR)',
+                                     'North-South', 'ATWOOD DR', 'Local (LO)', 
+                                     37.3113617, -121.81072, 
+                                     '3 Leg', '1 Way Stop');	//2
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Major Street (MA)',
+                                     'North-South', 'BRADBURY DR', 'Local (LO)', 
+                                     37.3107014, -121.812511, 
+                                     '3 Leg', '1 Way Stop'); //6774
+            
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Major Street (MA)',
+                                     'North-South', 'BRIGADOON WY', 'Neighborhood Collector (NC)', 
+                                     37.31197, -121.8048559, '3 Leg', 'Signal'); //5591
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Major Street (MA)',
+                                     'North-South', 'CAPITOL EX', 'Freeway/Expressway (CA)', 
+                                     37.3114376, -121.808082, 
+                                     '4 Leg', 'Signal');	//6075
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Major Street (MA)',
+                                     'North-South', 'DANDERHALL WY', 'Local (LO)', 
+                                     37.3123315, -121.802516, 
+                                     '3 Leg', '1 Way Stop');	//5597
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Major Street (MA)',
+                                     'North-South', 'FLATER DR', 'Local (LO)', 
+                                     37.3129981, -121.798174, 
+                                     '3 Leg', '1 Way Stop');	//5573
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Major Street (MA)',
+                                     'North-South', 'GLENRIO DR', 'Local (LO)', 
+                                     37.3128437, -121.799205, 
+                                     '3 Leg', '1 Way Stop');	//5572
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Major Street (MA)',
+                                     'North-South', 'IRWINDALE DR', 'Local (LO)', 
+                                     37.3109113, -121.811611, 
+                                     '3 Leg', '1 Way Stop');	//6775
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Major Street (MA)',
+                                     'North-South', 'KETTMAN RD', 'Local (LO)', 
+                                     37.3132939, -121.796154, 
+                                     '3 Leg', 'Signal');	//5606           
+            
+            createIntersectionObject('East-West', 'ABORN SQ', 'Local (LO)',
+                                     'North-South', 'MONROVIA DR', 'Local (LO)', 
+                                     37.3136983, -121.810275, 
+                                     '3 Leg', '1 Way Stop');	//6067
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Major Street (MA)',
+                                     'North-South', 'NIEMAN BL', 'Neighborhood Collector (NC)', 
+                                     37.312421, -121.801923, 
+                                     '4 Leg', 'Signal');	//5577
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Major Street (MA)',
+                                     'North-South', 'POMEROY AV', 'Local (LO)', 
+                                     37.312702, -121.80011, 
+                                     '3 Leg', '1 Way Stop');	//5630
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Major Street (MA)',
+                                     'North-South', 'PUMPHERSTON WY ', 'Local (LO)', 
+                                     37.3125893, -121.800867, 
+                                     '3 Leg', '1 Way Stop');	//5626
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Major Street (MA)',
+                                     'North-South', 'RENFIELD WY', 'Local (LO)', 
+                                     37.3131382, -121.797229, 
+                                     '3 Leg', '1 Way Stop');	//5574
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Major Street (MA)',
+                                     'North-South', 'ROCKY WATER LN', 'Local (LO)', 
+                                     37.3117223, -121.806453, 
+                                     '3 Leg', '1 Way Stop');		//6324
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Neighborhood Collector (NC)',
+                                     'North-South', 'STANHOPE DR', 'Local (LO)', 
+                                     37.3074836, -121.817642, 
+                                     '3 Leg', '1 Way Stop');		//6631
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Major Street (MA)',
+                                     'North-South', 'TOWERS LN', 'Local (LO)', 
+                                     37.3086651, -121.815796, 
+                                     '3 Leg', '2 Way Stop');		//6633
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Major Street (MA)',
+                                     'North-South', 'SAN FELIPE RD/WHITE RD', 'Major Street (MA)', 
+                                     37.3139708, -121.791537, 
+                                     '4 Leg', 'Signal');		//6734
+            
+            createIntersectionObject('East-West', 'ABORN RD', 'Major Street (MA)',
+                                     'North-South', 'KING RD/SILVER CREEK RD', 'Arterial (AR)', 
+                                     37.3101721, -121.813441, 
+                                     '4 Leg', 'Signal');		//6076
+            
+            createIntersectionObject('East-West', 'ABORN SQ', 'Local (LO)',
+                                     'North-South', 'CAPITOL EX', 'Freeway/Expressway (CA)', 
+                                     37.3138211, -121.807933, 
+                                     '3 Leg', 'No control');	//6776
+            
+            createIntersectionObject('North-South', 'ABRA CT', 'Local (LO)',
+                                     'East-West' , 'BAYLISS DR', 'Local (LO)', 
+                                     37.2174881, -121.765832, 
+                                     '3 Leg', 'No control');	//8545
+            
+            createIntersectionObject('East-West', 'ACACIA ST', 'Local (LO)',
+                                     'North-South', 'SAN PEDRO ST', 'Local (LO)', 
+                                     37.3461911, -121.901147, 
+                                     '3 Leg', '1 Way Stop');	//3928
+            
+            createIntersectionObject('East-West', 'ACAPULCO DR', 'Local (LO)',
+                                     'North-South', 'ANTHONY DR', 'Local (LO)', 
+                                     37.281143, -121.972757, 
+                                     '3 Leg', '3 Way Stop');	//10841
+            
+            createIntersectionObject('East-West', 'ACAPULCO DR', 'Local (LO)',
+                                     'North-South', 'CERVANTES WY', 'Local (LO)', 
+                                     37.281226, -121.966993, 
+                                     '3 Leg', 'No control');	//10601
+            
+            createIntersectionObject('East-West', 'ACAPULCO DR', 'Local (LO)',
+                                     'North-South', 'FENIAN DR', 'Arterial (AR)', 
+                                     37.2810958, -121.976521, 
+                                     '3 Leg', '1 Way Stop');
+            
+            
+            createIntersectionObject('East-West', 'ALLENWOOD DR', 'Local (LO)',
+                                     'North-South', 'LOVEWOOD WY', 'Local (LO)', 
+                                     37.32662, -121.7940423, '3 Leg', 'No Control');
+            
+            createIntersectionObject('North-South', 'SEACLIFF WY', 'Local (LO)',
+                                     'East-West', 'TULLY RD', 'Major Street (MA)', 
+                                     37.32137, -121.8273418, '3 Leg', '1 Way Stop');
+            
+            createIntersectionObject('North-South', 'DUMBARTON AV', 'Arterial (AR)',
+                                     'East-West', 'FROBISHER WY', 'Local (LO)', 
+                                     37.27756, -121.9158048,'4 Leg', '2 Way Stop');
+            
+            createIntersectionObject('East-West', 'ADAMSWOOD DR', 'Local (LO)',
+                                     'North-South', 'REMINGTON WY', 'Local (LO)', 
+                                     37.32762503, -121.7877739,'3 Leg', '1 Way Stop');
+            
+            insertIntersections();
+        }
+        
+        public void createIntersectionObject(
+            string aDirection, string aName, string aType, 
+            string bDirection, string bName, string bType, decimal latitude, decimal longitude,
+            string intersectionType, string trafficControlType){ 
+                
+                Intersection__c entry = new Intersection__c();
+                
+                //entry.ID = 'fdsafdasd';
+                
+                entry.AStreetDirection__c = aDirection;	//Picklist values: --None--, North-South, East-West
+                entry.AStreetName__c = aName;							
+                entry.AStreetType__c = aType;			//Picklist values: --None--, Freeway/Expressway (CA), Local (LO),  
+                //				Major Street (MA), Neighborhood Collector (NC)	
+                entry.Active__c = true;
+                entry.BStreetDirection__c = bDirection;	//Picklist values: --None--, North-South, East-West
+                entry.BStreetName__c = bName;
+                entry.BStreetType__c = bType;			//Picklist values: --None--, Freeway/Expressway (CA), Local (LO),  
+                //				Major Street (MA), Neighborhood Collector (NC)	
+                
+                entry.geolocation__latitude__s = latitude;
+                entry.geolocation__longitude__s = longitude;
+                
+                entry.IntersectionType__c = intersectionType;	//Picklist values: --None--, 2 Leg, 3 Leg, 4 Leg, Light Rail Crossing
+                entry.QStreetNameA__c = ' ';	//this field is blank on every entry 
+                entry.QStreetNameB__c = ' '; 	//this field is blank on every entry
+                entry.TrafficControlType__c = trafficControlType; //Picklist values: --None--, 1 Way Stop, 2 Way Stop, 3 Way Stop, 4 Way Stop, 
+                //					No Control, Signal
+                //Use No Control instead of --None-- for clarity
+                
+                appendToList(entry);
+                
+            }	//end method CreateReferenceIntersection
+        
+        public void appendToList(Intersection__c newEntry){	//Inserts intersections into the database
+            intersectionList.add(newEntry);
+        }	//end method insertIntersections
+        
+        public void insertIntersections(){
+            insert intersectionList;
+        }
+        
+    } //end class Intersections ((done))
+    
+    public class ShopNumbers{
+        List<ShopNumber__c> shopNumberList = new List<ShopNumber__c>();
+        
+        public void submitShopNumberData(){ //Date.newInstance(year, month, day);
+            
+            //Every entry from 1 - 50 is actually Type__c = 'Traffic Sign', but the triggers in the database throw exceptions
+            //If you write a new entry, just leave the Type__c field blank
+            
+            createShopNumberObject(37.33766, -121.8916747, 'FIRST ST & ST JOHN ST', '', '60653', '',
+                                   'San Jose', Date.newInstance(1928, 12, 12), 'San Jose', 100.00, 
+                                   'Existing',  '01', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '01'	
+                                  );
+            
+            createShopNumberObject(37.33616754, -121.8905658, 'FIRST ST & SANTA CLARA ST', '', '60598', '',
+                                   'San Jose', Date.newInstance(1928, 12, 12), 'San Jose', 100.00, 
+                                   'Existing',  '02', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '02'	
+                                  );
+            
+            createShopNumberObject(37.33431142, -121.8891978, 'FIRST ST & SAN FERNANDO ST', '', '60576', '',
+                                   'San Jose', Date.newInstance(1928, 12, 12), 'San Jose', 100.00, 
+                                   'Existing',  '03', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '03'	
+                                  );
+            
+            createShopNumberObject(37.39256058, -121.8434232, 'NOBLE AV & PIEDMONT RD', '', '96030', '',
+                                   'San Jose', Date.newInstance(1987, 4, 28), 'San Jose', 100.00, 
+                                   'Existing',  '04', '', '3',
+                                   '', 0.0, '', 0.0,
+                                   '04'	
+                                  );
+            
+            createShopNumberObject(37.33150229, -121.8871022, 'FIRST ST & SAN CARLOS ST', '', '60565', '',
+                                   'San Jose', Date.newInstance(1928, 12, 12), 'San Jose', 100.00, 
+                                   'Existing',  '05', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '05'	
+                                  );
+            
+            createShopNumberObject(37.33667059, -121.8895114, 'SANTA CLARA ST & SECOND ST', '', '107051', '',
+                                   'San Jose', Date.newInstance(1928, 12, 12), 'San Jose', 100.00, 
+                                   'Existing',  '06', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '06'	
+                                  );
+            
+            createShopNumberObject(37.33481661, -121.8881354, 'SAN FERNANDO & SECOND ST', '', '106303', '',
+                                   'San Jose', Date.newInstance(1928, 12, 12), 'San Jose', 100.00, 
+                                   'Existing',  '07', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '07'	//actually 07
+                                  );
+            
+            createShopNumberObject(37.24348779, -121.9226541, 'LEIGH AV & LOS GATOS ALMADEN RD', '', '82851', '',
+                                   'San Jose', Date.newInstance(1987, 12, 2), 'San Jose', 100.00, 
+                                   'Existing',  '08', '', '1',
+                                   '', 0.0, '', 0.0,
+                                   '08'	
+                                  );
+            
+            createShopNumberObject(37.33201663, -121.886017, 'SAN CARLOS ST & SECOND ST', '', '106061', '',
+                                   'San Jose', Date.newInstance(1928, 12, 12), 'San Jose', 100.00, 
+                                   'Existing',  '09', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '09'	
+                                  );
+            
+            createShopNumberObject(37.33546553, -121.8920544, 'MARKET ST & SANTA CLARA ST', '', '87988', '',
+                                   'San Jose', Date.newInstance(1928, 12, 12), 'San Jose', 100.00, 
+                                   'Existing',  '10', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '10'	
+                                  );
+            
+            createShopNumberObject(37.33363331, -121.8906926, 'MARKET ST & SAN FERNANDO ST', '', '87966', '',
+                                   'San Jose', Date.newInstance(1928, 12, 12), 'San Jose', 100.00, 
+                                   'Existing',  '11', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '11'	
+                                  );
+            
+            createShopNumberObject(37.33210096, -121.8900404, 'MARKET ST & PARK AV', '', '87900', '',
+                                   'San Jose', Date.newInstance(1959, 7, 7), 'San Jose', 100.00, 
+                                   'Existing',  '12', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '12'	
+                                  );
+            
+            createShopNumberObject(37.33087334, -121.8883885, 'MARKET ST & SAN CARLOS ST', '', '87955', '',
+                                   'San Jose', Date.newInstance(1928, 12, 12), 'San Jose', 100.00, 
+                                   'Existing',  '13', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '13'	
+                                  );
+            
+            createShopNumberObject(37.33235144, -121.8892704, 'MARKET ST & PASEO DE SAN ANTONIO', '', '87911', '',
+                                   'San Jose', Date.newInstance(1931, 6, 11), 'San Jose', 100.00, 
+                                   'Existing',  '14', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '14'	
+                                  );		//Traffic Signal (Ped Crossing)
+            
+            createShopNumberObject(37.33717301, -121.8884635, 'SANTA CLARA ST & THIRD ST', '', '107117', '',
+                                   'San Jose', Date.newInstance(1937, 6, 5), 'San Jose', 100.00, 
+                                   'Existing',  '15', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '15'	
+                                  );
+            
+            createShopNumberObject(37.33766995, -121.8874011, 'FOURTH ST & SANTA CLARA ST', '', '63007', '',
+                                   'San Jose', Date.newInstance(1928, 11, 16), 'San Jose', 100.00, 
+                                   'Existing',  '16', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '16'	
+                                  );
+            
+            createShopNumberObject(37.33300327, -121.8839304, 'FOURTH ST & SAN CARLOS ST', '', '62974', '',
+                                   'San Jose', Date.newInstance(1937, 12, 30), 'San Jose', 100.00, 
+                                   'Existing',  '17', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '17'	
+                                  );
+            
+            createShopNumberObject(37.33583168, -121.8860285, 'FOURTH ST & SAN FERNANDO ST', '', '62985', '',
+                                   'San Jose', Date.newInstance(1937, 12, 30), 'San Jose', 100.00, 
+                                   'Existing',  '18', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '18'	
+                                  );
+            
+            createShopNumberObject(37.33002344, -121.885984, 'FIRST ST & SAN SALVADOR ST', '', '60587', '',
+                                   'San Jose', Date.newInstance(1941, 5, 22), 'San Jose', 100.00, 
+                                   'Existing',  '19', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '19'	
+                                  );
+            
+            createShopNumberObject(37.27317305, -121.8375421, 'ROSENBAUM AV & SNELL AV', '', '104774', '',
+                                   'San Jose', Date.newInstance(1984, 12, 3), 'San Jose', 100.00, 
+                                   'Existing',  '20', '', '4',
+                                   '', 0.0, '', 0.0,
+                                   '20'	//actually 20
+                                  );
+            
+            createShopNumberObject(37.33461737, -121.8938229, 'ALMADEN AV & SANTA CLARA ST', '', '4410', '',
+                                   'San Jose', Date.newInstance(1946, 1, 1), 'San Jose', 100.00, 
+                                   'Existing',  '21', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '21'	
+                                  );
+            
+            createShopNumberObject(37.34054785, -121.8938281, 'FIRST ST & JULIAN ST', '', '60290', '',
+                                   'San Jose', Date.newInstance(1947, 11, 24), 'San Jose', 100.00, 
+                                   'Existing',  '22', '', '3',
+                                   '', 0.0, '', 0.0,
+                                   '22'	
+                                  );
+            
+            createShopNumberObject(37.33982716, -121.895314, 'COLEMAN AVMARKET ST & JULIAN ST', '', '41360', '',
+                                   'San Jose', Date.newInstance(1947, 11, 25), 'San Jose', 100.00, 
+                                   'Existing',  '23', '', '3',
+                                   '', 0.0, '', 0.0,
+                                   '23'	
+                                  );
+            
+            createShopNumberObject(37.34908019, -121.9002226, 'FIRST ST & TAYLOR ST', '', '60675', '',
+                                   'San Jose', Date.newInstance(1948, 1, 20), 'San Jose', 100.00, 
+                                   'Existing',  '24', '', '3',
+                                   '', 0.0, '', 0.0,
+                                   '24'	
+                                  );
+            
+            createShopNumberObject(37.33197092, -121.9012478, 'MONTGOMERY ST & SANTA CLARA ST', '', '92982', '',
+                                   'San Jose', Date.newInstance(1948, 2, 26), 'San Jose', 100.00, 
+                                   'Existing',  '25', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '25'	
+                                  );
+            
+            createShopNumberObject(37.32462799, -121.9004449, 'BIRD AV/MONTGOMERY ST & SAN CARLOS ST', '', '18732', '',
+                                   'San Jose', Date.newInstance(1948, 3, 18), 'San Jose', 100.00, 
+                                   'Existing',  '26', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '26'	
+                                  );
+            
+            createShopNumberObject(37.34379805, -121.8468819, 'KING RD & SINCLAIR FR', '', '79749', '',
+                                   'San Jose', Date.newInstance(1974, 8, 21), 'San Jose', 50.00, 
+                                   'Existing',  '27', '', '2',
+                                   'Caltrans', 50.0, '', 0.0,
+                                   '27'	//actually 27
+                                  );
+            
+            createShopNumberObject(37.34209343, -121.8780864, 'SANTA CLARA ST & THIRTEENTH ST', '', '107128', '',
+                                   'San Jose', Date.newInstance(1948, 5, 27), 'San Jose', 100.00, 
+                                   'Existing',  '28', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '28'	
+                                  );
+            
+            createShopNumberObject(37.33051989, -121.8849343, 'SAN SALVADOR ST & SECOND ST', '', '106787', '',
+                                   'San Jose', Date.newInstance(1949, 7, 14), 'San Jose', 100.00, 
+                                   'Existing',  '29', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '29'	
+                                  );
+            
+            createShopNumberObject(37.3338201, -121.8845493, 'FOURTH ST & SAN ANTONIO ST', '', '62963', '',
+                                   'San Jose', Date.newInstance(1949, 7, 15), 'San Jose', 100.00, 
+                                   'Existing',  '30', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '30'	
+                                  );		//Traffic Signal (Ped Crossing)
+            
+            
+            createShopNumberObject(37.32101475, -121.8786067, 'FIRST ST & WILLOW ST', '', '60720', '',
+                                   'San Jose', Date.newInstance(1949, 11, 20), 'San Jose', 100.00, 
+                                   'Existing',  '31', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '31'	
+                                  );
+            
+            createShopNumberObject(37.34069264, -121.8810382, 'SANTA CLARA ST & TENTH ST', '', '107106', '',
+                                   'San Jose', Date.newInstance(1950, 3, 1), 'San Jose', 100.00, 
+                                   'Existing',  '32', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '32'	
+                                  );
+            
+            createShopNumberObject(37.32643371, -121.9007425, 'MONTGOMERY ST & PARK AV', '', '92950', '',
+                                   'San Jose', Date.newInstance(1950, 4, 7), 'San Jose', 100.00, 
+                                   'Existing',  '33', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '33'	
+                                  );
+            
+            createShopNumberObject(37.3084684, -121.9010776, 'LINCOLN AV & WILLOW ST', '', '84127', '',
+                                   'San Jose', Date.newInstance(1950, 6, 23), 'San Jose', 100.00, 
+                                   'Existing',  '34', '', '1',
+                                   '', 0.0, '', 0.0,
+                                   '34'	
+                                  );
+            
+            createShopNumberObject(37.2505828, -121.8713866, 'BLOSSOM HILL ROAD & SANCHEZ DR', '', '20415', '',
+                                   'San Jose', Date.newInstance(1983, 1, 5), 'San Jose', 100.00, 
+                                   'Existing',  '35', '', '4',
+                                   '', 0.0, '', 0.0,
+                                   '35'	//actually 35
+                                  );
+            
+            createShopNumberObject(37.33919221, -121.8841909, 'SANTA CLARA ST & SEVENTH ST', '', '107073', '',
+                                   'San Jose', Date.newInstance(1950, 11, 1), 'San Jose', 100.00, 
+                                   'Existing',  '36', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '36'	
+                                  );
+            
+            createShopNumberObject(37.34385397, -121.8743809, 'SANTA CLARA ST & SEVENTEENTH ST', '', '107062', '',
+                                   'San Jose', Date.newInstance(1950, 11, 22), 'San Jose', 100.00, 
+                                   'Existing',  '37', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '37'	
+                                  );
+            
+            createShopNumberObject(37.34645857, -121.8813741, 'JULIAN ST & THIRTEENTH ST', '', '77769', '',
+                                   'San Jose', Date.newInstance(1951, 11, 29), 'San Jose', 100.00, 
+                                   'Existing',  '38', '', '3',
+                                   '', 0.0, '', 0.0,
+                                   '38'	
+                                  );		//Traffic Signal
+            
+            createShopNumberObject(37.35500492, -121.887746, 'TAYLOR ST & THIRTEENTH ST', '', '111561', '',
+                                   'San Jose', Date.newInstance(1951, 12, 7), 'San Jose', 100.00, 
+                                   'Existing',  '39', '', '3',
+                                   '', 0.0, '', 0.0,
+                                   '39'	
+                                  );		//Traffic Signal
+            
+            createShopNumberObject(37.33531878, -121.8870865, 'SAN FERNANDO ST & THIRD ST', '', '106370', '',
+                                   'San Jose', Date.newInstance(1951, 9, 18), 'San Jose', 100.00, 
+                                   'Existing',  '40', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '40'	
+                                  );		//Traffic Signal
+            
+            createShopNumberObject(37.34699973, -121.8677382, 'SANTA CLARA ST & TWENTY FOURTH ST', '', '107227', '',
+                                   'San Jose', Date.newInstance(1953, 2, 20), 'San Jose', 100.00, 
+                                   'Existing',  '41', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '41'	
+                                  );		//Traffic Signal
+            
+            createShopNumberObject(37.34564423, -121.8706162, 'SANTA CLARA ST & TWENTY FIRST ST', '', '107216', '',
+                                   'San Jose', Date.newInstance(1928, 12, 12), 'San Jose', 100.00, 
+                                   'Existing',  '42', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '42'	
+                                  );		//Traffic Signal
+            
+            createShopNumberObject(37.31892515, -121.8822107, 'ALMDADEN AV & WILLOW ST', '', '4498', '',
+                                   'San Jose', Date.newInstance(1952, 12, 31), 'San Jose', 100.00, 
+                                   'Existing',  '43', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '43'	
+                                  );		//Traffic Signal
+            
+            createShopNumberObject(37.34204723, -121.8906698, 'FOURTH ST & JULIAN ST', '', '62908', '',
+                                   'San Jose', Date.newInstance(1950, 5, 19), 'San Jose', 100.00, 
+                                   'Existing',  '44', '', '3',
+                                   '', 0.0, '', 0.0,
+                                   '44'	
+                                  );      //Traffic Signal
+            
+            
+            
+            createShopNumberObject(37.33395434, -121.924053, 'NAGLEE AV & PARK AV', '', '94874', '',
+                                   'San Jose', Date.newInstance(1960, 6, 21), 'San Jose', 100.00, 
+                                   'Existing',  '45', '', '1',
+                                   '', 0.0, '', 0.0,
+                                   '45'	
+                                  );		//Traffic Signal
+            
+            createShopNumberObject(37.32405739, -121.8815439, 'FIRST ST & VIRGINA ST', '', '60708', '',
+                                   'San Jose', Date.newInstance(1953, 11, 10), 'San Jose', 100.00, 
+                                   'Existing',  '46', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '46'	
+                                  );		// Traffic Signal
+            
+            createShopNumberObject(37.34064166, -121.9134011, 'STOCKTON AV & TAYLOR ST', '', '110846', '',
+                                   'San Jose', Date.newInstance(1954, 3, 18), 'San Jose', 100.00, 
+                                   'Existing',  '47', '', '3',
+                                   '', 0.0, '', 0.0,
+                                   '47'	
+                                  );		// Traffic Signal
+            
+            createShopNumberObject(37.35059121, -121.897038, 'FOURTH ST & TAYLOR ST', '', '63030', '',
+                                   'San Jose', Date.newInstance(1954, 6, 25), 'San Jose', 100.00, 
+                                   'Existing',  '48', '', '3',
+                                   '', 0.0, '', 0.0,
+                                   '48'	
+                                  );	// Traffic Signal
+            
+            
+            createShopNumberObject(37.3373333, -121.8828374, 'SAN FERNANDO ST & SEVENTH ST', '', '106325', '',
+                                   'San Jose', Date.newInstance(1954, 10, 15), 'San Jose', 100.00, 
+                                   'Existing',  '49', '', '2',
+                                   '', 0.0, '', 0.0,
+                                   '49'	
+                                  );	//106325  Traffic Signal
+            
+            
+            
+            
+            createShopNumberObject(37.33758415, -121.9192726, 'ALAMEDA & NAGLEE AV/TAYLOR ST', '', '2562', '',
+                                   'San Jose', Date.newInstance(1969, 7, 1), 'San Jose', 100.00, 
+                                   'Existing',  '50', '', '1',
+                                   '', 0.0, '', 0.0,
+                                   '50'	
+                                  );	//2562 Traffic Signal
+            
+            createShopNumberObject(37.35635215, -121.8634956, '125\' E/O Thirty Third St', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8101', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8101'	
+                                  );
+            
+            createShopNumberObject(37.34950029, -121.7990931, '5\' E/O Ruboin Dr', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8103', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8103'	
+                                  );
+            
+            createShopNumberObject(37.33714176, -121.8258028, '165\' S/O Holly Hill Dr', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8107', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8107'	
+                                  );
+            
+            createShopNumberObject(37.33714176, -121.8258028, '30\' W/O Adrian Way', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8109', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8109'	
+                                  );
+            
+            
+            createShopNumberObject(37.41107634, -121.8665779, '30\' W/O Treewood Ln', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8110', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8110'	
+                                  );
+            
+            createShopNumberObject(37.34317818, -121.813236, '200\' W/O Ridgemont Dr', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8111', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8111'	
+                                  );
+            
+            createShopNumberObject(37.37096731, -121.8324969, '5\' N/O Bigwood Ave', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8112', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8112'	
+                                  );    
+            
+            createShopNumberObject(37.35144419, -121.8496207, '35\' W/O McCreery Ave', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8113', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8113'	
+                                  );
+            
+            createShopNumberObject(37.40692756, -121.8562208, '15\' W/O Japaul Ln', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8114', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8114'	
+                                  );  
+            
+            createShopNumberObject(37.28809803, -121.821747, '30\' W/O Kauai Dr', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8115', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8115'	
+                                  );
+            
+            createShopNumberObject(37.319373, -121.8825093, '100\' S/O Edwards Ave', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8117', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8117'	
+                                  );
+            
+            createShopNumberObject(37.30369477, -121.8872899, '25\' S/O Willow Glen Wy', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8119', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8119'	
+                                  ); 
+            
+            createShopNumberObject(37.32420309, -121.8514489, '300\' N/O Fair Ave', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8122', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8122'	
+                                  );
+            
+            createShopNumberObject(37.34551997, -121.8064031, '575\' W/O Hayworth Dr', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8125', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8125'	
+                                  );
+            
+            createShopNumberObject(37.3263138, -121.8475869, '25\' S/O Sultana Dr', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8129', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8129'	
+                                  );
+            
+            createShopNumberObject(37.33288356, -121.831726, '495\' E/O Bermuda Way', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8131', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8131'	
+                                  );
+            
+            createShopNumberObject(37.34159379, -121.8175766, '100\' W/O Wonderama Dr', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8132', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8132'	
+                                  );
+            
+            createShopNumberObject(37.36490371, -121.8270327, '100\' N/O Rose Ave', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8133', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8133'	
+                                  );
+            
+            createShopNumberObject(37.40281071, -121.8607651, '20\' E/O Queens Crossing', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8134', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8134'	
+                                  );
+            
+            createShopNumberObject(37.28767487, -121.8251979, '30\' W/O Masters Ct', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8135', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8135'	
+                                  );
+            
+            createShopNumberObject(37.32678447, -121.8543299, '158\' N/O Mistflower Dr', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8137', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8137'	
+                                  );
+            
+            createShopNumberObject(37.35860528, -121.824126, '10\' W/O Malabar Dr', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8139', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8139'	
+                                  );
+            
+            createShopNumberObject(37.35892127, -121.8238881, '100\' W/O Nordyke Dr', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8140', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8140'	
+                                  );
+            
+            createShopNumberObject(37.37816468, -121.8260468, '160\' S/O Summit Ave', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8141', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8141'	
+                                  );
+            
+            createShopNumberObject(37.35926945, -121.8261794, '315\' S/O Wilbur Ave', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8142', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8142'	
+                                  );
+            
+            createShopNumberObject(37.3603653, -121.8272639, '155\' N/O Wilbur Ave', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8143', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8143'	
+                                  );
+            
+            createShopNumberObject(37.24328945, -121.9372322,  '250\' W/O Taft Dr', '', '', '',
+                                   'San Jose', Date.newInstance(2013, 5, 7), 'San Jose', 100.00, 
+                                   'Existing',  '8144', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8144'	
+                                  );
+            
+            createShopNumberObject(37.35089818, -121.8232728, '63\' S/O Sussex Dr', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8146', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8146'	
+                                  );
+            
+            createShopNumberObject(37.34947644, -121.8220524, '187\' N/O Murtha Dr', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8147', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8147'	
+                                  );
+            createShopNumberObject(37.30797465, -121.8008884, '503\' W/O Nieman Blvd', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8151', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8151'	
+                                  );
+            
+            createShopNumberObject(37.30510885, -121.8078662, '471\' E/O Silver Creek Rd', '', '', '',
+                                   'San Jose', Date.newInstance(2012, 1, 14), 'San Jose', 100.00, 
+                                   'Existing',  '8152', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8152'	
+                                  );
+            
+            createShopNumberObject(37.30780397, -121.8920194, '150\' N/O Vernon Av', '', '', '',
+                                   'San Jose', Date.newInstance(2016, 8, 15), 'San Jose', 100.00, 
+                                   'Existing',  '8171', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8171'	
+                                  );
+            
+            createShopNumberObject(37.31268469, -121.8973933, '26\' N/O Snyder Av', '', '', '',
+                                   'San Jose', Date.newInstance(2016, 8, 15), 'San Jose', 100.00, 
+                                   'Existing',  '8172', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8172'	
+                                  );
+            
+            createShopNumberObject(37.42331994, -121.9654784, '197\' E/O Tony P. Santos St', '', '', '',
+                                   'San Jose', Date.newInstance(2016, 2, 15), 'San Jose', 100.00, 
+                                   'Existing',  '8174', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8174'	
+                                  );
+            
+            createShopNumberObject(37.4233199, -121.8961938, '144\' N/O Willow St', '', '', '',
+                                   'San Jose', Date.newInstance(2016, 8, 15), 'San Jose', 100.00, 
+                                   'Existing',  '8175', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8175'	
+                                  );
+            
+            createShopNumberObject(37.31070095, -121.8955071, '440\' S/O Willow St', '', '', '',
+                                   'San Jose', Date.newInstance(2016, 8, 15), 'San Jose', 100.00, 
+                                   'Existing',  '8176', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8176'	
+                                  );
+            
+            createShopNumberObject(37.37307339, -121.8580581, '335\' S/O Mabury Rd', '', '', '',
+                                   'San Jose', Date.newInstance(2016, 8, 15), 'San Jose', 100.00, 
+                                   'Existing',  '8177', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8177'	
+                                  );
+            
+            createShopNumberObject(37.36837564, -121.8530313, '114\' N/O Lanning Way', '', '', '',
+                                   'San Jose', Date.newInstance(2016, 8, 15), 'San Jose', 100.00, 
+                                   'Existing',  '8178', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8178'	
+                                  );
+            
+            createShopNumberObject(37.33133126, -121.8525054, '30\' S/O Owsley Av', '', '', '',
+                                   'San Jose', Date.newInstance(2016, 8, 15), 'San Jose', 100.00, 
+                                   'Existing',  '8179', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8179'	
+                                  );
+            
+            createShopNumberObject(37.35754033, -121.8604082, '210\' S/O McKee Rd', '', '', '',
+                                   'San Jose', Date.newInstance(2016, 8, 15), 'San Jose', 100.00, 
+                                   'Existing',  '8180', '', '',
+                                   '', 0.0, '', 0.0,
+                                   '8180'	
+                                  );
+            
+            insertShopNumberList();
+            
+        }
+        
+        public void createShopNumberObject(
+            decimal lat, decimal lng, string i1name, string i2name, string i1num, string i2num,
+            string operator, Date activated, string priOwner, decimal priOwnerShare,
+            string status, string tempShopNo, string shopType, string zone,
+            string secOwner, decimal secOwnerShare,string terOwner, decimal terOwnerShare,
+            string name){
+                
+                ShopNumber__c shopEntry = new ShopNumber__c();
+                //All ownership shares are decimals. Original Activate Date is a Date object
+                
+                
+                shopEntry.Geolocation__Latitude__s =  lat;
+                shopEntry.Geolocation__Longitude__s = lng;
+                shopEntry.IntersectionName1__c = i1name;
+                shopEntry.IntersectionName2__c = i2name;
+                shopEntry.Operator__c = operator;
+                shopEntry.OriginalActivationDate__c = activated; //Date.newInstance(year, month, day);
+                shopEntry.PrimaryOwnershipName__c = priOwner;
+                shopEntry.PrimaryOwnershipShare__c = priOwnerShare;
+                shopEntry.RecordDrawingURL__c = '';
+                shopEntry.SecondaryOwnershipName__c = secOwner;	
+                shopEntry.SecondaryOwnershipShare__c = secOwnerShare;	    
+                shopEntry.Status__c = status; //Picklist: --None--, Existing, Existing-To be modified, Future, Deactivated,
+                shopEntry.TempShopNumber__c = tempShopNo;	//some number 0 - 9999
+                shopEntry.TertiaryOwnershipName__c = terOwner;
+                shopEntry.TertiaryOwnershipShare__c = terOwnerShare;
+                
+                shopEntry.Type__c = shopType;	//Picklist values: --None--, Traffic Signal, Traffic Signal (Ped Crossing),
+               
+                shopEntry.Zone__c = zone;		//Picklist values: --None, 1, 2, 3, 4, Deactivated, Cancelled
+                
+                
+                // shopEntry.CreatedById = ' ';
+                // shopEntry.CreatedByUsername__c = ' ';
+                // shopEntry.IntersectionNumber1__c = ' ';
+                // shopEntry.IntersectionNumber2__c = ' ';
+                // shopEntry.ShopNumberSortable__c = ' ';	//unwriteable
+                // shopEntry.TotalWorkOnLocation__c = ' ';	//unwriteable
+                // Cancelled, Owned By Other
+                shopEntry.Name = name;
+                
+                appendShopNumberList(shopEntry);                                 
+            }
+        
+        public void appendShopNumberList(ShopNumber__c shopEntryIn){
+            shopNumberList.add(shopEntryIn);
+        }
+        
+        public void insertShopNumberList(){
+            insert shopNumberList;
+        }
+        
+    }	//end class ShopNumbers ((done))
+    
+    public class RadarSigns{	//needs a unique Name
+        
+        List<RadarSign__c> radarList = new List<RadarSign__c>();
+        
+        public void submitRadarData(){
+            
+            createRadarObject('Proposed LED', 'Westbound', '385 FT', 'Solar', 
+                              37.37096731, -121.8324969, '125\' N/O Bigwood Ave', 'B', 'Elementary - Darling',
+                              '10N18', '', '', '35 mph',
+                              'AC', '8101', '8101');  
+
+            
+            createRadarObject('LED', 'Westbound', '160 FT', 'AC', 
+							  37.34950029, -121.7990931, '5\' E/O Ruboin Dr', 'D', 'Middle - Boeger',
+							  '', '', '10R87', '35 mph',
+							  'AC', '8103', '8103');  
+            
+            createRadarObject('Proposed LED', 'Northbound', '650 FT', 'AC*',//existing 
+                              37.0, -121.0, '165\' S/O Holly Hill Dr', 'A', 'Middle - Fair',//school
+                              '', '', '', '35 mph',//newPole, notes, poleID
+                              'AC', '8107', '8107');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Westbound', '100 FT', 'AC*',//existing 
+                              37.0, -121.0, '30\' W/O Adrian Way', 'D', 'Elementary - Meyer',//school
+                              '', '', '11P251', '35 mph',//newPole, notes, poleID
+                              'AC', '8109', '8109');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Westbound', '85 FT', 'AC', 
+                              37.41107634, -121.8665779, '30\' W/O Treewood Ln', 'D', 'Middle - Morrill',
+                              '6N63', 'SEE NEW LOCATION NEAR TREEWOOD LN', '6N629', '35 mph',
+                              'AC', '8110', '8110');
+            
+            createRadarObject('Conventional', 'Westbound', '0 FT', 'AC*',//existing 
+                              37.0, -121.0, '200\' W/O Ridgemont Dr', 'D', 'Middle - Ocala',//school
+                              '', '', '11Q88', '35 mph',//newPole, notes, poleID
+                              'AC', '8111', '8111');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Southbound', '265 FT', 'AC*', 
+                              37.37096731, -121.8324969, '5\' N/O Bigwood Ave', 'D', 'Middle - Pala',
+                              '9P33', 'SEE NEW LOCATION NEAR BIGWOOD DR', '9P34', '35 mph',
+                              'AC', '8112', '8112');  
+            
+            createRadarObject('Planned LED', 'Westbound', '141 FT', 'Solar',//existing 
+                              37.0, -121.0, '35\' W/O McCreery Ave', 'D', 'Elementary - San Antonio',//school
+                              '10O583', 'SEE NEW LOCATION NEAR LYNETTE WY', '10O21', '35 mph',//newPole, notes, poleID
+                              'AC', '8113', '8113');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Westbound', '300 FT', 'AC', 
+                              37.40692756, -121.8562208, '15\' W/O Japaul Ln', 'B', 'Middle - Sierramont',
+                              '', '', '6N234', '35 mph',
+                              'AC', '8114', '8114');  
+            
+            createRadarObject('Conventional', 'Westbound', '0 FT', 'AC', 
+                              37.0, -121.0, '30\' W/O Kauai Dr', 'B', 'Middle - Sylvandale',
+                              '', '', '15Q265', '30 mph',
+                              'AC', '8115', '8115');  
+            
+            createRadarObject('LED', 'Northbound', '130 FT', 'AC',//existing 
+                              37.0, -121.0, '100\' S/O Edwards Ave', 'A', '',//school
+                              '', '', '13M343', '30 mph',//newPole, notes, poleID
+                              'AC', '8117', '8117');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Southbound', '0 FT', 'AC', 
+                              37.30369477, -121.8872899, '25\' S/O Willow Glen Wy', 'D', 'Elementary - Galarza',
+                              '', '14L Uses Nasdac Clock', '14L348', '35 mph',
+                              'AC', '8119', '8119');
+            
+            createRadarObject('Conventional', 'Northbound', '16 FT', 'Solar',//existing 
+                              37.0, -121.0, '300\' N/O Fair Ave', 'D', 'Elementary - Washington',//school
+                              '', '', '12O186', '35 mph',//newPole, notes, poleID
+                              'AC', '8122', '8122');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Eastbound', '0 FT', 'AC',//existing 
+                              37.0, -121.0, '375\' W/O Hayworth Dr', 'D', 'Middle - Boeger',//school
+                              '', '', '11Q36', '35 mph',//newPole, notes, poleID
+                              'AC', '8125', '8125');  //proposed, name, shopNo
+            
+            createRadarObject('Planned LED', 'Southbound', '0 FT', 'AC',//existing 
+                              37.0, -121.0, '25\' S/O Sultana Dr', 'A', 'Middle - Fair',//school
+                              '', '', '12O23', '35 mph',//newPole, notes, poleID
+                              'AC', '8129', '8129');  //proposed, name, shopNo
+            
+            createRadarObject('LED', 'Eastbound', '0 FT', 'Solar',//existing 
+                              37.0, -121.0, '495\' E/O Bermuda Way', 'D', 'Elementary - Meyer',//school
+                              '', '', '12P172', '35 mph',//newPole, notes, poleID
+                              'AC', '8131', '8131');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Eastbound', '150 FT', 'AC*',//existing 
+                              37.0, -121.0, '100\' W/O Wonderama Dr', 'D', 'Middle - Ocala',//school
+                              '', '', '11Q218', '35 mph',//newPole, notes, poleID
+                              'AC', '8132', '8132');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Northbound', '500 FT', 'AC',//existing 
+                              37.0, -121.0, '100\' N/O Rose Ave', 'D', 'Middle - Pala',//school
+                              '', '', '9P143', '35 mph',//newPole, notes, poleID
+                              'AC', '8133', '8133');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Eastbound', '400 FT', 'AC*',//existing 
+                              37.0, -121.0, '20\' E/O Queens Crossing', 'B', 'Middle - Sierramont',//school
+                              '', '', '6N320', '35 mph',//newPole, notes, poleID
+                              'AC', '8134', '8134');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Eastbound', '50 FT', 'Solar',//existing 
+                              37.0, -121.0, '30\' W/O Masters Ct', 'B', 'Middle - Sylvandale',//school
+                              '', '', '15P207', '30 mph',//newPole, notes, poleID
+                              'AC', '8135', '8135');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Southbound', '345 FT', 'Solar',//existing 
+                              37.0, -121.0, '158\' N/O Mistflower Dr', 'D', 'Elementary - Kennedy',//school
+                              '', '', '1B', '35 mph',//newPole, notes, poleID
+                              'Solar', '8137', '8137');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Eastbound', '0 FT', 'Solar',//existing 
+                              37.0, -121.0, '10\' W/O Malabar Dr', 'A', 'Elementary - Lyndale',//school
+                              '', '10P', '10P140', '25 mph',//newPole, notes, poleID
+                              'AC', '8139', '8139');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Westbound', '0 FT', 'Solar',//existing 
+                              37.0, -121.0, '100\' W/O Nordyke Dr', 'A', 'Elementary - Lyndale',//school
+                              '', '10P', '10Q355', '25 mph',//newPole, notes, poleID
+                              'AC', '8140', '8140');  //proposed, name, shopNo
+             
+            createRadarObject('Conventional', 'Southbound', '0 FT', 'Solar',//existing 
+                              37.0, -121.0, '160\' S/O Summit Ave', 'B', 'Elementary - Linda Vista',//school
+                              '', 'MAP', '1B', '25 mph',//newPole, notes, poleID
+                              'Solar', '8141', '8141');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Northbound', '0 FT', 'Solar',//existing 
+                              37.0, -121.0, '315\' S/O Wilbur Ave', 'B', 'Elementary - Lyndale',//school
+                              '', 'MAP', '1B', '25 mph',//newPole, notes, poleID
+                              'Solar', '8142', '8142');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Southbound', '0 FT', 'Solar',//existing 
+                              37.0, -121.0, '155\' N/O Wilbur Ave', 'B', '',//school
+                              '', 'MAP', '1B', '25 mph',//newPole, notes, poleID
+                              'Solar', '8143', '8143');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Northbound', '250 FT', 'Solar',//existing 
+                              37.0, -121.0, '250\' W/O Taft Dr', 'B', 'Middle - Union',//school
+                              '', '19J', '19J142', '35 mph',//newPole, notes, poleID
+                              'Solar', '8144', '8144');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Southbound', '50 FT', 'Solar', 
+                              37.0, -121.0, '63\' S/O Sussex Dr', 'B', 'Elementary - Ryan',
+                              '', '', '6N234', '30 mph',
+                              'Solar', '8146', '8146');  
+            
+            createRadarObject('Conventional', 'Northbound', '0 FT', 'Solar', 
+                              37.0, -121.0, '187\' N/O Murtha Dr', 'B', 'Elementary - Ryan',
+                              '', '', '10Q375', '30 mph',
+                              'AC', '8147', '8147');  
+            
+            createRadarObject('Conventional', 'Westbound', '0 FT', 'AC',//existing 
+                              37.0, -121.0, '503\' W/O Nieman Blvd', 'D', 'Elementary - Montgomery',//school
+                              '', '', '14R337', '30 mph',//newPole, notes, poleID
+                              'AC', '8151', '8151');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Eastbound', '0 FT', 'AC',//existing 
+                              37.0, -121.0, '471\' E/O Silver Creek Rd', 'B', 'High - Silver Creek',//school
+                              '', '', '14R8', '30 mph',//newPole, notes, poleID
+                              'AC', '8152', '8152');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Northbound', '', 'AC',//existing 
+                              37.0, -121.0, '150\' N/O Vernon Av', 'B', '',//school
+                              '', 'Lincoln Project', '13L84', '25 mph',//newPole, notes, poleID
+                              'AC', '8171', '8171');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Southbound', '', 'AC',//existing 
+                              37.0, -121.0, '26\' N/O Snyder Av', '', '',//school
+                              '', 'Lincoln Project', '13L309', '25 mph',//newPole, notes, poleID
+                              'AC', '8172', '8172');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Westbound', '', 'AC',//existing 
+                              37.0, -121.0, '197\' E/O Tony P. Santos St', '', '',//school
+                              '', 'Public Works Contractor', '4H170', '25 mph',//newPole, notes, poleID
+                              'AC', '8174', '8174');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Northbound', '', 'AC',//existing 
+                              37.0, -121.0, '144\' N/O Willow St', '', '',//school
+                              '', 'Lincoln Project', '13L94', '25 mph',//newPole, notes, poleID
+                              'AC', '8175', '8175');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Southbound', '', 'AC',//existing 
+                              37.0, -121.0, '440\' S/O Willow St', '', '',//school
+                              '', 'Lincoln Project', '13L99', '25 mph',//newPole, notes, poleID
+                              'AC', '8176', '8176');  //proposed, name, shopNo 
+            
+            createRadarObject('Conventional', 'Southbound', '', 'AC',//existing 
+                              37.0, -121.0, '335\' S/O Mabury Rd', '', 'High - Independence',//school
+                              '', 'Vision Zero', '9N63', '',//newPole, notes, poleID
+                              'AC', '8177', '8177');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Northbound', '', 'AC',//existing 
+                              37.0, -121.0, '114\' N/O Lanning Way', '', 'High - Independence',//school
+                              '', 'Vision Zero', '9N221', '',//newPole, notes, poleID
+                              'AC', '8178', '8178');  //proposed, name, shopNo  
+            
+            createRadarObject('Conventional', 'Southbound', '', 'AC',//existing 
+                              37.0, -121.0, '30\' S/O Owsley Av', '', '',//school
+                              '', 'Vision Zero', '12O4', '35 mph',//newPole, notes, poleID
+                              'AC', '8179', '8179');  //proposed, name, shopNo
+            
+            createRadarObject('Conventional', 'Southbound', '', 'AC',//existing 
+                              37.0, -121.0, '210\' S/O McKee Rd', '', '',//school
+                              '', 'Vision Zero', '10N301', '35 mph',//newPole, notes, poleID
+                              'AC', '8180', '8180');  //proposed, name, shopNo
+            insertRadarList();
+        }
+        
+        public void createRadarObject(string bulbType, string direction, string distance, string existing,
+         							  decimal lat, decimal lng, string loc, string mode, string school,
+        							  string newPole, string notes,  string poleID, string spLimit,
+          							  string proposed, string name, string shopNo){
+               RadarSign__c rEntry = new RadarSign__c();
+               //[SELECT ShopNumber__c FROM RadarSign__c WHERE RadarSign__c.ShopNumber__c =: shopNo LIMIT 1];
+               
+               
+               rEntry.BulbType__c = bulbType;				//Picklist: Conventional, LED, Planned LED, Proposed LED
+               rEntry.Direction__c = direction;			//Picklist: --None--, Northbound, Southbound, Westbound, Eastbound
+               rEntry.DistanceToSchool__c = distance;		//0-1000 FT (ie '590 FT')
+               rEntry.ExistingSignType__c = existing;		//Picklist: --None--, AC, AC*, Solar, PG&E*, New
+               rEntry.Geolocation__Latitude__s = lat;	
+               rEntry.Geolocation__Longitude__s = lng;
+               rEntry.Location__c = loc;				//Address (ie "50' N/O Upton Wy" or "250' W/O Taft Drive")
+               rEntry.Mode__c = mode;					//Picklist: --None--, A, B, C, D
+               rEntry.NearbySchool__c = school;			//Picklist: Gigantic, go see for yourself
+               rEntry.NewPoleID__c = newPole;				//Text(10)
+               rEntry.Notes__c = notes;					//Text		
+               
+               rEntry.PoleID__c = poleID;
+               rEntry.PostedSpeedLimit__c = spLimit;
+               rEntry.ProposedSignType__c = proposed;		//Picklist:
+               rEntry.Name = name;
+               
+               ShopNumber__c sh = [select IntersectionName1__c from ShopNumber__c where Name = :shopNo Limit 1]; 
+               rEntry.ShopNumber__c = sh.Id;
+               rEntry.Status__c = 'Existing';			//Picklist, but all entries are 'Existing' 
+               rEntry.Version__c = 'Speed Check';
+               
+                                          
+               //rEntry.OwnerId = owner;
+               appendRadarToList(rEntry);
+        }
+        
+        public void appendRadarToList(RadarSign__c radarEntryIn){
+            radarList.add(radarEntryIn);           
+        }
+        
+        public void insertRadarList(){
+            insert radarList;
+        }
+        
+    }	//end class RadarSigns ((need proper shop numbers))
+    
+    public class SignalAssets{
+        
+        List <SignalAsset__c> assetList = new List<SignalAsset__c>();
+        
+        public void submitSignalAssetData(){
+            createSignalAssetObject('Audible', 'TS1-2B', 'Fixed', false, '--None--', 
+                                    '01', 'Downtown Core', '');
+            
+            createSignalAssetObject('Audible', 'TS1-2B', 'Loops;Fixed', true, 'N;S;E;W', 
+                                    '02', 'Downtown Core', '');
+            
+            createSignalAssetObject('Audible', 'TS1-2B', 'Loops;Fixed', false, '', 
+                                    '03', 'Downtown Core', '');
+            
+            createSignalAssetObject('Audible', 'TS1-2B', 'Loops', false, '', 
+                                    '04', '', '');
+            
+            createSignalAssetObject('Audible', 'TS1-2B', 'Loops;Fixed', false, '', 
+                                    '05', 'Downtown Core', '');
+            
+            createSignalAssetObject('Audible', 'TS1-2B', 'Loops;Fixed', true, 'W;E', 
+                                    '06', 'Downtown Core', '');
+            
+            createSignalAssetObject('Audible', 'TS1-2B', 'Fixed', false, '', 
+                                    '07', 'Downtown Core', '');
+            
+            createSignalAssetObject('Audible', 'TS1-2B', 'Video', true, 'N;S;W;E', 
+                                    '08', '', 'Iteris VantageEdge 2');
+            
+            createSignalAssetObject('Audible', 'TS1-2B', 'Loops', true, 'W;E', 
+                                    '09', 'Downtown Core', '');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Loops', true, 'N;S;W;E', 
+                                    '10', 'Downtown Core', '');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Loops;Fixed', false, '', 
+                                    '11', 'Downtown Core', '');
+            
+            createSignalAssetObject('', 'TS2-2N', 'Video', true, 'N;S', 
+                                    '12', 'Downtown Core', '');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Loops', false, '', 
+                                    '13', 'Downtown Core', '');
+            
+            createSignalAssetObject('', 'TS2-2N', 'Fixed', false, '', 
+                                    '14', 'Downtown Core', '');
+            
+            createSignalAssetObject('', 'TS2-2N', 'Loops;Fixed', true, 'N;S;W;E', 
+                                    '15', 'Downtown Core', '');
+            
+            createSignalAssetObject('Audible', 'TS1-2B', 'Video', true, 'N;S;W;E', 
+                                    '16', 'Downtown Core', 'Iteris VantageEdge 2');
+            
+            createSignalAssetObject('Audible', 'TS2-2N', 'Loops', true, 'W;E', 
+                                    '17', 'Downtown Core', '');
+            
+            createSignalAssetObject('Audible', 'TS1-2B', 'Video', true, 'N;S;W;E', 
+                                    '18', 'Downtown Core', 'Traficon');
+            
+            createSignalAssetObject('', 'TS2-2N', 'Fixed', true, 'N;S;W;E', 
+                                    '19', 'Downtown Core', '');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Loops', false, '', 
+                                    '20', '', '');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Fixed', true, 'W;E', 
+                                    '21', 'Downtown Core', '');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Loops', false, '', 
+                                    '22', 'Downtown Frame', '');
+            
+            createSignalAssetObject('', 'TS2-2N', 'Video', true, 'N;S;W;E', 
+                                    '23', 'Downtown Core', 'Traficon');
+            
+            createSignalAssetObject('Audible', 'TS1-2B', 'Loops', false, '', 
+                                    '24', 'Downtown Frame', '');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Loops', true, 'W;E', 
+                                    '25', 'Downtown Core', '');
+            /*
+            createSignalAssetObject('Audible', 'TS1-2B', 'Loops', false, '', 
+                                    '26', 'Downtown Core', '');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Loops', false, '', 
+                                    '27', '', '');
+            
+            createSignalAssetObject('Audible', 'TS1-2B', 'Loops', true, 'N;S;W;E', 
+                                    '28', '', '');
+            
+            createSignalAssetObject('', 'TS2-2N', 'Fixed', false, '', 
+                                    '29', 'Downtown Core', '');
+            
+            createSignalAssetObject('Audible', 'TS2-2N', 'Fixed', false, '', 
+                                    '30', 'Downtown Core', '');
+            
+            createSignalAssetObject('', 'TS2-2N', 'Loops', false, '', 
+                                    '31', 'Downtown Core', '');
+            
+            createSignalAssetObject('Audible', 'TS1-2B', 'Loops', true, 'N;S;W;E', 
+                                    '32', 'Downtown Frame', '');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Loops', true, 'N;S;W;E', 
+                                    '33', 'Downtown Core', '');
+            
+            createSignalAssetObject('Accessible (Polara)', 'TS1-2B', 'Video', true, 'N;S;W;E', 
+                                    '34', '', 'Iteris VantageEdge 2');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Video', false, '', 
+                                    '35', '', 'Iteris VantageEdge 2');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Video', true, 'N;S;W;E', 
+                                    '36', 'Downtown Core', 'Traficon');
+            
+            createSignalAssetObject('', 'TS2-2N', 'Fixed', true, 'W;E', 
+                                    '37', '', '');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Loops;Video', true, 'N;S;W;E', 
+                                    '38', '', 'Traficon');
+            
+            createSignalAssetObject('', 'TS2-2N', 'Fixed', false, '', 
+                                    '39', '', 'Traficon');
+            
+            createSignalAssetObject('', 'TS2-2N', 'Fixed', false, '', 
+                                    '40', 'Downtown Core', '');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Loops', true, 'W;E', 
+                                    '41', '', '');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Fixed', true, 'W;E', 
+                                    '42', '', '');
+            
+            createSignalAssetObject('', 'TS2-2N', 'Fixed', false, '', 
+                                    '43', '', '');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Video', true, 'N;S;W;E', 
+                                    '44', 'Downtown Frame', 'Traficon');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Video', true, 'N;S;W;E', 
+                                    '45', '', 'Iteris VantageEdge 2');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Loops', false, '', 
+                                    '46', 'Downtown Frame', '');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Loops', false, '', 
+                                    '47', '', '');
+            
+            createSignalAssetObject('', 'TS1-2B', 'Loops', false, '', 
+                                    '48', '', '');
+            
+            createSignalAssetObject('', 'TS2-2N', 'Loops', false, '', 
+                                    '49', 'Downtown Frame', '');
+            
+            createSignalAssetObject('Audible', 'TS1-2B', 'Video', true, 'N;S;W;E', 
+                                    '50', 'Downtown Frame', 'Iteris VantageEdge 2');*/
+            
+            insertAssetList();
+        }
+        
+        
+        
+        
+        void createSignalAssetObject(string APS, string cab1type, string detect, boolean evp, string evpdir,  
+         							 string shopNo, string signalGeo, string vidDecType){
+                                         
+             SignalAsset__c assetEntry = new SignalAsset__c();
+             
+             assetEntry.APS__c = APS;	//Multipicklist
+             assetEntry.Cab1Type__c = cab1type; 		//Picklist
+             assetEntry.CCTV__c = false;		//Boolean, every entry is false
+             assetEntry.Detection__c = detect;			//Multipicklist           
+             assetEntry.EVP__c = evp;	//Checkbox (Boolean)
+             assetEntry.EVPDirection__c = evpdir; //Multipicklist
+             assetEntry.Cab2HubCabinet__c = false;	//Checkbox (Boolean), every entry is false
+             assetEntry.RailroadPreempt__c = false;	//Checkbox (Boolean), every entry is false
+             
+             ShopNumber__c sh = [select IntersectionName1__c from ShopNumber__c where Name = :shopNo Limit 1]; 
+             assetEntry.ShopNumber__c = sh.Id;		//Master-Detail(Shop Number)
+             
+             assetEntry.SignalGeofilter__c = signalGeo;		//Multipick 
+             assetEntry.TSP__c = false;			//Checkbox (Boolean) every entry is false
+             assetEntry.VideoDetectionType__c = vidDecType;  //Picklist
+             assetEntry.WirelessRadio__c = '';			//Multipick
+             
+             insertSignalAsset(assetEntry);
+             
+             //***************UNWRITTEN FIELDS**********************
+             //assetEntry.Cab2Type__c = cab2type; 		//Picklist, every entry is blank
+             //assetEntry.CCTVType__c = cctvType;			//Multipicklist, every entry is blank
+             //assetEntry.Cab1ControllerType__c = cab1Cont;	//Picklist, every entry is blank
+             //assetEntry.Cab2ControllerType__c = cab2Cont;	//Picklist, every entry is blank
+             //assetEntry.Cab1Encoder__c = cab1En;		//Multipicklist
+             //assetEntry.Cab2Encoder__c = cab2En; 	//Multipicklist   
+             //assetEntry.Cab1NetworkSwitches__c = network1;	//Multipick, every entry is blank
+             //assetEntry.Cab2NetworkSwitches__c = network2; //Multipick, every entry is blank
+             //assetEntry.DetectorIOModule__c = detIOMod;	//Picklist
+             //assetEntry.ShopNumberSortable__c = shopNoSort;	//Formula(Number) unwriteable
+             //assetEntry.ShopStatus__c = shopStatus;			//Formula(Text) unwriteable
+             //assetEntry.ShopType__c = shopType;				//Formula(Text) unwriteable
+             //assetEntry.Name = '';				//String unwriteable
+             //assetEntry.Cab1SoftwareUsed__c = cab1Soft;		//Picklist blank entries
+             //assetEntry.Cab2SoftwareUsed__c = cab2Soft;		//Picklist blank entries
+             //assetEntry.IntersectionLocation__c = intLoc;//Formula(Text) blank entries
+             
+             //assetEntry.VideoDetectionDetail__c = vidDecDet;	//Multipick
+         }
+        
+        void insertSignalAsset(SignalAsset__c signalAssetEntryIn){
+            assetList.add(signalAssetEntryIn);
+        }
+        
+        void insertAssetList(){
+            insert assetList;
+        }
+        
+    }	//end class SignalAssets ((done))
+    
+    public class SignalOperation{
+        
+        List<SignalOperation__c> operationList = new List<SignalOperation__c>();
+        
+        
+        public void submitSignalOperationData(){    
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Permissive', '', 'Permissive', 'Permissive',
+                                        false, false, false, 'Permissive', '01', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', '', 'Protected', 'Protected',
+                                        false, false, false, 'Protected', '02', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Permissive', '', 'Permissive', 'Permissive',
+                                        false, false, false, 'Permissive', '03', false);
+            
+            createSignalOperationObject('Full', 'Commercial', '', '', 'Permissive', 'Permissive',
+                                        false, false, true, 'Permissive', '04', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Permissive', '', 'Permissive', 'Permissive',
+                                        false, false, false, 'Permissive', '05', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', '', 'Protected', 'Protected', 'Protected',
+                                        false, false, false, 'Protected', '06', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', '', 'Protected', 'Permissive', 'Permissive',
+                                        false, false, false, 'Permissive', '07', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', 'Protected', 'Protected', 'Protected',
+                                        false, false, false, 'Protected', '08', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', '', 'Protected', 'Protected', 'Protected',
+                                        false, false, false, 'Protected', '09', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', 'Protected', 'Protected', 'Protected',
+                                        false, false, false, 'Protected', '10', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', 'Protected', 'Permissive', 'Permissive',
+                                        false, false, false, 'Permissive', '11', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', '', 'Protected', 'Protected', '',
+                                        false, false, false, 'Protected', '12', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', 'Protected', 'Protected', 'Protected',
+                                        false, false, false, 'Protected', '13', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', '', '', '',
+                                        false, false, false, 'Protected', '14', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', '', 'Protected', 'Protected',
+                                        false, false, false, 'Protected', '15', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', '', 'Protected', 'Protected', 'Protected',
+                                        false, false, false, 'Protected', '16', false);
+            
+            createSignalOperationObject('Unsignalized', 'School', '', 'Protected', 'Protected', '',
+                                        false, false, false, 'Protected', '17', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', '', 'Protected', 'Protected', 'Protected',
+                                        false, false, false, 'Protected', '18', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Permissive', 'Permissive', 'Permissive', 'Permissive',
+                                        false, false, false, 'Permissive', '19', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', 'Protected', 'Permissive', 'Permissive',
+                                        false, false, false, 'Permissive', '20', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Permissive', 'Permissive', 'Permissive', 'Permissive',
+                                        false, false, false, 'Permissive', '21', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', 'Protected', '', 'Protected',
+                                        false, false, false, 'Protected', '22', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', 'Protected', '', 'Protected',
+                                        false, false, false, 'Protected', '23', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', 'Protected', 'Protected', 'Protected',
+                                        false, false, false, 'Protected', '24', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', '', '', 'Protected', 'Protected',
+                                        false, false, false, 'Protected', '25', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', 'Protected', 'Protected', 'Protected',
+                                        false, false, false, 'Protected', '26', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', 'Protected', '', 'Protected',
+                                        false, false, false, 'Protected', '27', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', 'Permissive', 'Permissive', 'Protected', 'Protected',
+                                        false, false, false, 'Permissive', '28', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', '', 'Protected', 'Permissive', 'Permissive',
+                                        false, false, false, 'Permissive', '29', false);
+            
+            createSignalOperationObject('No Driveway', 'No Driveway', '', 'Protected', '', '',
+                                        false, false, false, 'Protected', '30', false);
+            /*
+createSignalOperationObject('Full', 'Commercial', 'Permissive', 'Permissive', 'Permissive', 'Permissive',
+false, false, false, 'Permissive', '31', false);
+
+createSignalOperationObject('No Driveway', 'No Driveway', '', 'Protected', 'Protected', 'Protected',
+false, false, false, 'Protected', '32', false);
+
+createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', 'Protected', 'Protected', 'Protected',
+false, false, false, 'Protected', '33', false);
+
+createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', 'Protected', 'Protected', 'Protected',
+false, false, false, 'Protected', '34', false);
+
+createSignalOperationObject('Full', 'Commercial', 'Permissive', '', 'Permissive', 'Permissive',
+false, false, false, 'Permissive', '35', true);
+
+createSignalOperationObject('No Driveway', 'No Driveway', 'Permissive', 'Permissive', 'Protected', 'Protected',
+false, false, true, 'Permissive', '36', false);
+
+createSignalOperationObject('No Driveway', 'No Driveway', 'Permissive', 'Permissive', 'Permissive', 'Permissive',
+false, false, false, 'Permissive', '37', true);
+
+createSignalOperationObject('No Driveway', 'No Driveway', 'Permissive', 'Permissive', 'Permissive', 'Permissive',
+false, false, false, 'Permissive', '38', false);
+
+createSignalOperationObject('No Driveway', 'No Driveway', 'Permissive', 'Permissive', 'Permissive', 'Permissive',
+false, false, false, 'Permissive', '39', false);
+
+createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', '', 'Permissive', 'Permissive',
+false, false, false, 'Permissive', '40', false);
+
+createSignalOperationObject('No Driveway', 'No Driveway', 'Permissive', 'Permissive', 'Protected', 'Protected',
+false, false, false, 'Permissive', '41', true);
+
+createSignalOperationObject('No Driveway', 'No Driveway', 'Permissive', 'Permissive', 'Permissive', 'Permissive',
+false, false, false, 'Permissive', '42', true);
+
+createSignalOperationObject('No Driveway', 'No Driveway', 'Permissive', 'Permissive', 'Permissive', 'Permissive',
+false, false, false, 'Permissive', '43', true);
+
+createSignalOperationObject('No Driveway', 'No Driveway', 'Permissive', 'Permissive', 'Permissive', 'Permissive',
+false, false, false, 'Permissive', '44', false);
+
+createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', 'Protected', 'Protected', 'Protected',
+false, false, false, 'Protected', '45', false);
+
+createSignalOperationObject('No Driveway', 'No Driveway', 'Permissive', 'Permissive', 'Permissive', 'Permissive',
+false, false, false, 'Permissive', '46', true);
+
+createSignalOperationObject('No Driveway', 'No Driveway', 'Permissive', 'Permissive', 'Protected', 'Protected',
+false, false, false, 'Permissive', '47', false);
+
+createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', 'Protected', 'Protected', 'Protected',
+false, false, false, 'Protected', '48', false);
+
+createSignalOperationObject('Full', 'School', 'Permissive', 'Permissive', 'Permissive', 'Permissive',
+false, false, false, 'Permissive', '49', true);
+
+createSignalOperationObject('No Driveway', 'No Driveway', 'Protected', 'Protected', 'Protected', 'Protected',
+false, false, false, 'Protected', '50', false);*/
+            
+            
+            insertOperationList();
+            
+       									 }
+        
+        void createSignalOperationObject(string sigInd, string driveways, string nb, string sb, string eb, string wb, 
+                                         boolean overlap, boolean LPI, boolean school, string phasing, string shopNo,
+                                         boolean seniorTiming){
+                    SignalOperation__c sopEntry = new SignalOperation__c();
+                                             
+                                             
+                    sopEntry.DrivewaySignalIndication__c = sigInd;
+                    sopEntry.Driveways__c = driveways;
+                                             
+                    sopEntry.NorthboundPhasing__c = nb;
+                    sopEntry.EastboundPhasing__c = eb;
+                    sopEntry.SouthboundPhasing__c = sb;
+                    sopEntry.WestboundPhasing__c = wb; 
+                    sopEntry.OverlapPhasing__c = overlap;
+                    sopEntry.SeniorTiming__c = false;
+                                             
+                    sopEntry.LPI__c = LPI;
+                    sopEntry.Phasing__c = phasing; //picklist
+                    sopEntry.RailroadPreemption__c = false;	//all entries are false
+                    sopEntry.SchoolTiming__c = school;
+                                             
+                    ShopNumber__c sh = [select IntersectionName1__c from ShopNumber__c where Name = :shopNo Limit 1]; 
+                    sopEntry.ShopNumber__c = sh.Id;		//Master-Detail(Shop Number)
+                                             
+                    appendOperationToList(sopEntry);
+                                             
+                                             
+                    //sopEntry.Scramble__c = false;                                
+                    //sopEntry.CoordinatedCorridor__c = '';	//picklist, every entry is blank
+                    //sopEntry.Coordination__c = '';			//multipick, every entry is blank
+                    //sopEntry.CoversheetURL__c = '';			//URL(255), every entry is blank
+                    //sopEntry.Flushplans__c = '';		//picklist, all blank
+                    //sopEntry.TransitSignalPreemption__c = transitPre;                                  
+                  }
+        
+        void appendOperationToList(SignalOperation__c signalOperationEntry){
+            operationList.add(signalOperationEntry);
+            
+        }
+        
+        void insertOperationList(){
+            insert operationList;
+        }
+    } //end class SignalOperation
+    
+    public class IMInventory{
+        
+        List <IMInventory__c> invList = new List<IMInventory__c>();
+        
+        public void submitInvData(){ 	
+            //The values commented out on this list are 'inactive' on the IM Inventory list
+            //
+            createInvObject('NM-12', 'Malfunction Management Unit',   'Malfunction Management Unit - SSD',  '8028-8', 'L0040');
+            
+            createInvObject('NM-12', 'Malfunction Management Unit',   'Malfunction Management Unit - SSD',  '8026-1', 'L0041');
+            
+            createInvObject('LCD-12P', 'Malfunction Management Unit', 'Malfunction Management Unit - SSD',  '05021-5', 'L0111');
+            
+            createInvObject('LCD-12P',  'Malfunction Management Unit', 'Malfunction Management Unit - SSD',  '012058-8', 'L0158');
+            
+            createInvObject('LCD-12P', 'Malfunction Management Unit', 'Malfunction Management Unit - IDC',  '990609-013', 'L0183');
+            
+            createInvObject('LCD-12P', 'Malfunction Management Unit', 'Malfunction Management Unit - IDC',  '980603-001', 'L0486');
+            
+            createInvObject('LCD-12P', 'Malfunction Management Unit', 'Malfunction Management Unit - IDC',  '001009-042', 'L0546');
+            
+            createInvObject('MMU-1600', 'Malfunction Management Unit', 'Malfunction Management Unit - RENO', '256947', 'L0621');
+            
+            createInvObject('MMU-1600', 'Malfunction Management Unit', 'Malfunction Management Unit - RENO', '257154', 'L0624');
+            
+            createInvObject('SSM-12LE', 'Malfunction Management Unit', 'Malfunction Management Unit - EDI',  '20108268', 'L0659');
+            
+            createInvObject('2070-TS2', 'Controller', 'Controller - Eagle',  '', 'F0912');
+            
+            createInvObject('2070-D4', 'Controller', 'Controller - Eagle',  '', 'F0029');
+            
+            createInvObject('2070-332', 'Controller', 'Controller - SIEMENS',  '', 'F1006');
+            
+            createInvObject('2070L-TS2', 'Controller', 'Controller - SIEMENS',  '42600', 'F1011');
+            
+            createInvObject('2070-D4', 'Controller', 'Controller - Eagle',  '', 'F0287');
+            
+            createInvObject('2070-TS2', 'Controller', 'Controller - Eagle',  '', 'F421');
+            
+            //createInvObject('2070ATC', 'Controller', 'Controller - McCain',  '', 'F1055');
+            
+            //createInvObject('ATC EX 2070', 'Controller', 'Controller - McCain',  '17053', 'F1036');
+            
+            //createInvObject('2070 E', 'Controller', 'Controller - McCain',  '17360', 'F1038');
+            
+            //createInvObject('TS1', 'Controller', 'Controller - McCain',  '1712009315', 'C0214');
+            
+            //createInvObject('TS2', 'Controller', 'Controller - McCain',  '1712009382', 'C0193');
+            
+			//createInvObject('NEMA', 'Controller', 'Controller - McCain',  '17412', 'C0027');     
+            
+            //createInvObject('NEMA', 'Controller', 'Controller - McCain',  '17409', 'C0028');   
+            
+            //createInvObject('2070L ATC', 'Controller', 'Controller - SIEMENS',  '', 'F1051');
+            
+            insertInvList();
+        }
+        
+        void createInvObject(string equipModel, string equipType, string equipManu, string OEMno, string serialID)
+        {
+            IMInventory__c ientry = new IMInventory__c();
+            
+            ientry.EquipmentModelSearch__c = equipModel;
+            ientry.EquipmentModel__c = equipModel;
+            
+            ientry.EquipmentType__c = equipType;
+            ientry.EquipmentTypeSearch__c = equipType;
+            
+            ientry.EquipmentTypeManufacturer__c = equipManu;
+            ientry.EquipmentTypeManufacturerSearch__c = equipManu;
+            ientry.OEMSerialNumber__c = OEMno;
+            
+            ientry.Name = serialID;
+            
+            appendInvObjectToList(ientry);
+            
+            
+            //*********UNUSED FIELDS************
+            //ientry.InstalledShopNumber__c = shopNo;
+            //ientry.IntersectionName1__c = interName;
+            //ientry.OwnerId = ''; 
+            //ientry.PurchaseDate__c = purchaseDate;
+            //ientry.EquipmentStatus__c = '';
+            //ientry.EquipmentStatusSearch__c = '';
+            //ientry.Zone__c = zone        
+            
+        }
+        
+        void appendInvObjectToList(IMInventory__c iEntryIn){
+            invList.add(iEntryIn);
+        }
+        
+        void insertInvList(){
+            insert invList;
+        }
+    }	//end class IMInventory
+    
+    public class BaseException extends Exception{}
+    
+    public static void main()
+    {
+        
+        if ([select IntersectionName1__c from ShopNumber__c Limit 1].isEmpty()){ 
+                 
+        Intersections intObj = new Intersections();
+        ShopNumbers shopObj = new ShopNumbers();
+        RadarSigns radarObj = new RadarSigns();
+        SignalAssets assetObj = new SignalAssets();
+        SignalOperation opObj = new SignalOperation();
+        IMInventory invObj = new IMInventory();
+       
+            
+        intObj.submitIntersectionData();
+        shopObj.submitShopNumberData();
+        radarObj.submitRadarData();
+        assetObj.submitSignalAssetData();
+        opObj.submitSignalOperationData();
+        invObj.submitInvData();
+            
+        }
+        else{
+			throw new BaseException('*** ERROR *** In order to run this, your sandbox must be empty. Do NOT run this on Production!');
+        }   
+        
+    }
+    
+    
+} //end class InitializeReferenceData
